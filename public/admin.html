@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>administration</title>
+</head>
+
+<body>
+
+    <div class="header">
+        <p id="usernameCorner">welkom</p>
+        <button id="adminBtn" onclick="window.location.href='agenda.html';">agenda</button>
+        <button id="logoutBtn">Uitloggen</button>
+    </div>
+   
+    <div class="login-container">
+        <video id="bgVideo" autoplay muted loop playsinline>
+            <source src="https://r2.gangmonkeys.com/gangmonkeys/bg.mp4" type="video/mp4" />
+            REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+        </video>
+        <div class="blur-overlay"></div>
+
+
+        <div class="agenda">
+            
+        </div>
+
+       
+
+
+
+    </div>
+    <script>
+
+        document.getElementById('logoutBtn').addEventListener('click', function () {
+
+            fetch('/logout', {
+                method: 'GET',
+                credentials: 'include'
+            })
+                .then(response => {
+                    if (response.ok) {
+
+                        window.location.href = '/index.html';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error during logout:', error);
+                });
+        });
+        
+    </script>
+    <script>
+        fetch('/check-auth')
+            .then(response => {
+                if (!response.ok) {
+                    window.location.href = '/index.html';
+                }
+            });
+
+        
+    
+    </script>
+    <script src="adminScript.js"></script>
+
+</body>
+
+</html>
